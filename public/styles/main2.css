@@ -181,6 +181,15 @@ to{ transform: rotate(360deg); }
     margin-left: 100%;
 }
 
+#platform{
+    height: 8%;
+    width: 10%;
+    background: linear-gradient(rgb(147, 165, 42),rgba(165, 112, 42, 0.767));
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 50%;
+}
+
 #bigBlock{
     height: 80%;
     width :15%;
