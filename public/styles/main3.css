@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h1{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    align-self: center;
+
+}
+
+#reset{
+    position: relative;
+    margin-top: 10%;
+    width: 20%;
+    height: 20% ;
+    align-self: center;
+    font-size: 520%;
+}

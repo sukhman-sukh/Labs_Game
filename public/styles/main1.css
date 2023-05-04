@@ -1,0 +1,36 @@
+body{
+   background-color: black;
+}
+
+#background{
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.button{
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+   font-size: 516%;
+   
+}
+#l1{
+    position: absolute;
+    margin-left: 17%;
+    margin-top: -17%;
+}
+#l2{
+    position: absolute;
+    margin-left: 36rem;
+    margin-top: -50rem;
+    display: none;
+}
+#l3{
+    position: absolute;
+    margin-left: 50rem;
+    margin-top: -17%;
+    display: none;
+}
+#text{
+    font-size: 500%;
+    color: red;
+}

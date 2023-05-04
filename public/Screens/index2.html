@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script type="text/javascript" src="module1.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/x-icon" href="../public/assets/red ball.jpg">
+
+    <link rel="stylesheet" href="../styles/main2.css">
+    <!-- <style>
+        canvas {
+            border:2px solid black;
+            background-color: #87ceeb;
+        }
+        </style> -->
+
+    <title>Red Ball</title>
+</head>
+
+<body>
+    <div id="canvas1">
+        <div id="sky">
+
+            <div id="scorediv">
+                <h1 id="score">Score :- </h1>
+            </div>
+            <div id="lowLand"></div>
+            <div id="highLand"></div>
+            <div id="bigBlock"></div>
+            <div id="bigBlock2"></div>
+            <div id="bigBlock3"></div>
+            
+            <div id="boundry">
+                <div class="star">
+                    <img id="star1" src="../assets/star.png" alt="">
+
+                    <img id="star2" src="../assets/star.png" alt="">
+
+                    <img id="star3" src="../assets/star.png" alt="">
+
+                </div>
+                <img id="gameBall" src="../assets/red ball.jpg" alt="">
+            </div>
+            <img id="dagger" src="../assets/dagger.png" alt="">
+        </div>
+        <div id="grass">
+                <img id="thorns" src="../assets/thorns.png">
+            <!-- <img id="thorns" src="../assets/thorns.png"> -->
+            <img id="thorn2" src="../assets/thorns.png">
+            <img id="thorn3" src="../assets/thorns.png">
+
+        </div>
+        <div id="soil"></div>
+    </div>
+    <div id="buttons">
+        <button class="button" id="forward">
+            <img width="100" height="80" src="../assets/back-button.png">
+        </button>
+        <button class="button" id="backward">
+            <img style="transform: rotate(180deg)" width="100" height="80" src="../assets/back-button.png">
+        </button>
+        <h1 id="game_name">The Red Ball Game </h1>
+        <button class="button" id="jump">
+            <img style="transform: rotate(90deg)" width="80" height="100" src="../assets/back-button.png">
+        </button>
+
+        <img id="ball" src="../assets/red ball.jpg" alt="">
+    </div>
+
+
+
+</body>
+<script src="../components/main2.js"></script>
+
+</html>
