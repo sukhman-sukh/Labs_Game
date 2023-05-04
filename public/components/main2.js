@@ -65,7 +65,7 @@ const acceleration = 0;
 const friction = 0;
 let cWidth = 10;
 // GAME FUNCTIONS
-
+var statuss =JSON.parse(localStorage.getItem("statusSukh" )) ;
 function main(ctime) {
     window.requestAnimationFrame(main);
 
@@ -86,6 +86,7 @@ function gameEngine() {
     check();
     move();
     updateScreen();
+    var statsString = JSON.stringify(statuss);
     
 
 }
@@ -96,25 +97,29 @@ function check() {
     let lowBlockRight = lowBlockLeft + 10;
     let highBlockRight = highBlockLeft + 10;
     apperentCx = 50 + cx / 2;
-    console.log("cxLeft = " + apperentCx);
-    // console.log("thornLeft = "+thornLeft);
-    // // console.log("thornRight = "+thornRight);
-    // // console.log("lowBlockLeft = " + lowBlockLeft);
-    // // console.log("lowBlockRight = " + lowBlockRight);
 
-    // // console.log("highBlockLeft = " + highBlockLeft);
-    // // console.log("highBlockRight = " + highBlockRight);
-    console.log("bigBlock = "+bigBlockLeft);
+    console.log(localStorage.getItem("statusSukh"));
+    // console.log("cxLeft = " + apperentCx);
+    // // console.log("thornLeft = "+thornLeft);
+    // // // console.log("thornRight = "+thornRight);
+    // // // console.log("lowBlockLeft = " + lowBlockLeft);
+    // // // console.log("lowBlockRight = " + lowBlockRight);
 
+    // // // console.log("highBlockLeft = " + highBlockLeft);
+    // // // console.log("highBlockRight = " + highBlockRight);
+    // console.log("bigBlock = "+bigBlockLeft);
+    // console.log("big Block 2 "+bigBlock2Left);
+    // console.log('plateformLeft '+platformleft);
     // console.log("cy = " + cy);
     // console.log("cxLeft = "+cx);
+  
 
     if (((apperentCx >= thornLeft && apperentCx <= thornRight && thorn1Pass == false)
         // || (cRight >=thornLeft && cRight  <= thornRight )
     ) && cy == 0) {
         console.log("entered");
         thorn1Pass = true;
-        L1Clear = false;
+        statuss.L1Clear= false;
         gameEnd = true;
         // gameEngine();
     }
@@ -125,52 +130,39 @@ function check() {
         }
     }
 
-    // if (((apperentCx >= thorn2Left && apperentCx <= thorn2Left+thornWidht && thorn2Pass == false)
-    // // || (cRight >=thornLeft && cRight  <= thornRight )
-    //     ) && cy == 0) {
-    //         console.log("entered");
-    //         thorn2Pass = true;
-    //         L1Clear = false;
-    //         gameEnd = true;
-    //         // gameEngine();
-    //     }
-    //     if (((apperentCx >= thorn3Left && apperentCx <= thorn3Left+thornWidht && thorn3Pass == false)
-    //     // || (cRight >=thornLeft && cRight  <= thornRight )
-    //         ) && cy == 0) {
-    //             console.log("entered");
-    //             thorn3Pass = true;
-    //             L1Clear = false;
-    //             gameEnd = true;
-    //             // gameEngine();
-    //         }
-    if (apperentCx >= bigBlockLeft && apperentCx<=bigBlockLeft+16 && cy <= 29) {
-        console.log("thouched the big block");
-        pass = false;
-    }
-    else {
-        pass = true;
-    }
-    if (apperentCx >= bigBlock2Left && apperentCx<=bigBlock2Left+16 && cy <= 29) {
-        console.log("thouched the big block");
-        pass = false;
-    }
-    else {
-        pass = true;
-    }
-    if (apperentCx >= bigBlockLeft && apperentCx <= bigBlockLeft + 16 && cy >= 34) {
-        cy = 30;
-        cyInitial = 30;
-        gameBall.style.position = 'relative';
-        gameBall.style.marginBottom = cy + '%';
-        if (score < 20) {
-            
-            star2.style.display = 'block';
-            star2.classList.add('starAnimate');
-            score = score + 10;
+    if (((apperentCx >= thorn2Left && apperentCx <= thorn2Left+thornWidht && thorn2Pass == false)
+    // || (cRight >=thornLeft && cRight  <= thornRight )
+        ) && cy == 0) {
+            console.log("entered");
+            thorn2Pass = true;
+            statuss.L1Clear = false;
+            gameEnd = true;
+            // gameEngine();
         }
-
+        if (((apperentCx >= thorn3Left && apperentCx <= thorn3Left+thornWidht && thorn3Pass == false)
+        // || (cRight >=thornLeft && cRight  <= thornRight )
+            ) && cy == 0) {
+                console.log("entered");
+                thorn3Pass = true;
+                statuss.L1Clear = false;
+                gameEnd = true;
+                // gameEngine();
+            }
+    if ((apperentCx >= bigBlockLeft-2 && apperentCx<=bigBlockLeft+17) && cy <= 29) {
+        console.log("thouched the big block");
+        pass = false;
     }
-    
+    else {
+        pass = true;
+    }
+    if ((apperentCx >= bigBlock2Left-5 && apperentCx<=bigBlock2Left+8) && cy <= 29) {
+        console.log("thouched the big block");
+        pass = false;
+    }
+    else {
+        pass = true;
+    }
+   
     if (apperentCx >= highBlockLeft && apperentCx <= highBlockLeft + 10 && cy >= 23) {
         cy = 20;
         cyInitial = 20;
@@ -178,6 +170,7 @@ function check() {
         gameBall.style.marginBottom = cy + '%';
 
     }
+
     if (apperentCx >= lowBlockLeft && apperentCx <= lowBlockLeft + 10 && cy >= 15) {
         cy = 11;
         cyInitial = 11;
@@ -185,20 +178,23 @@ function check() {
         gameBall.style.marginBottom = cy + '%';
 
     }
-    if(apperentCx <=platformleft+10 && apperentCx >=platformleft && cy >=28 ){
+    if(apperentCx <=platformleft+13 && apperentCx >=platformleft-3 && cy >=28 ){
         cy =30;
+        console.log("on plateform");
         cyInitial =30;
+        gameBall.style.position = 'absolute';
+        // let xcord = (platformleft-50)/2;
         gameBall.style.marginBottom = cy +"%";
         gameBall.style.marginLeft = platformleft+'%';
     }
-    else if(apperentCx > bigBlockLeft + 16  && keyPressed == false)
-    {
-        cyInitial = 0;
-        cy =0;
-        gameBall.style.position = 'relative';
-        gameBall.style.marginBottom = cy + '%';
-    }
-    else if(apperentCx > bigBlock2Left + 16  && keyPressed == false)
+    // else if(apperentCx > bigBlockLeft + 16  && keyPressed == false)
+    // {
+    //     cyInitial = 0;
+    //     cy =0;
+    //     gameBall.style.position = 'relative';
+    //     gameBall.style.marginBottom = cy + '%';
+    // }
+    else if(apperentCx > bigBlock2Left + 10  && keyPressed == false)
     {
         cyInitial = 0;
         cy =0;
@@ -214,13 +210,29 @@ function check() {
 
     if(apperentCx >= daggerLeft)
     {
-        L1Clear =true;
+        statuss.L1Clear =true;
+        localStorage.setItem("statusSukh" , statsString);
         gameEnd = true;
     }
-    if (apperentCx >= bigBlock2Left && apperentCx <= bigBlock2Left + 16 && cy >= 34) {
+    if (apperentCx >= bigBlockLeft && apperentCx <= bigBlockLeft + 16 && cy >= 34) {
         cy = 30;
         cyInitial = 30;
-        console.log("at big blovk 2");
+        gameBall.style.position = 'relative';
+        gameBall.style.marginBottom = cy + '%';
+        if (score < 20) {
+            
+            star2.style.display = 'block';
+            star2.classList.add('starAnimate');
+            score = score + 10;
+        }
+
+    }
+    
+    // if ( ( apperentCx >= bigBlock2Left-2 ) && ( apperentCx <= bigBlock2Left + 16 ) && ( cy >= 25 ) ) {
+    if ( distance>=64 && distance<= 74 ) {
+        cy = 30;
+        cyInitial = 30;
+        console.log("at big blovk 2",cy,cyInitial);
         gameBall.style.position = 'relative';
         gameBall.style.marginBottom = cy + '%';
         if (score < 30) {
@@ -348,9 +360,6 @@ function moveForward() {
         gameBall.style.position = 'relative';
         gameBall.style.marginLeft = cx + '%';
     }
-    if (velocity <= 3) {
-        velocity = velocity + acceleration;
-    }
 
 }
 
@@ -401,7 +410,11 @@ function updateScreen() {
     if (cx >= 30 && keyPressed == true && pass == true && keyStatus[3] == 1) {
         distance = distance + 1;
     }
-    console.log(distance);
+
+    else if(apperentCx <=platformleft+13 && apperentCx >=platformleft-3){
+        distance= distance+1;
+    }
+    console.log('distance '+distance);
     if (distance >= 5 && cx >= 30 && keyPressed == true && keyStatus[3] == 1 && pass == true) {
         thornLand();
     }
