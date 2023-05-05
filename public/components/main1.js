@@ -39,7 +39,8 @@ if(statuss.L1Clear){
     statuss.openL2 = true;
     statuss.openL1 = false;
     l2.style.display = 'block';
-    l1.style.display = 'none';
+    l1.style.backgroundColor = 'white';
+    l1.style.color ='black';
 }
 
 if(statuss.L2Clear){
