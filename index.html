@@ -1,40 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript" src="public/components/module1.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="public/assets/red ball.jpg">
-    
-    <link rel="stylesheet" href="public/styles/main.css">
-    <style>
-        canvas {
-            border:2px solid black;
-            background-color: #87ceeb;
-        }
-        </style>
-    
-    <title>Red Ball</title>
+    <link rel="stylesheet" href="public/styles/main1.css">
+    <title>Game Page</title>
 </head>
-<body >
-    
-    <div id="canvas1"></div>
-    <script>src ="public/components/main1.js"</script>
-    <div id ="buttons"> 
-        <button  class = "button" id="forward">
-            <img width="100" height="80" src="public/assets/back-button.png">
-        </button>
-        <button  class="button" id="backward">
-            <img style="transform: rotate(180deg)" width="100" height="80" src="public/assets/back-button.png" >
-        </button>
-         <button class="button" id="jump">
-            <img style="transform: rotate(90deg)"  width="80" height="100" src="public/assets/back-button.png" >
-        </button>
+<body>
+    <div id="conatiner">
+        <img id = "background" src="public/assets/timeline.png" alt="">    
         
-        <img id = "ball" src="public/assets/red ball.jpg" alt="">
+        <h1 id ="text">THE RED BALL GAME</h1>   
     </div>
-    
-  
-    <h1>The Red Ball Game </h1>
+    <button  class = "button" id="l1" onclick="window.location.href = 'public/Screens/index2.html';">1</button>
+        <button  class = "button" id="l2">2</button>
+        <button  class = "button" id="l3">3</button>
 </body>
+<script src="public/components/main1.js"></script>
 </html>
