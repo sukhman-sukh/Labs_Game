@@ -14,9 +14,13 @@ document.querySelector('#reset').addEventListener('click', f1 );
 function f1(){
     
     console.log('changed');
-   statuss.openL2 =true;
-   statuss.openL1 = false;
-   statuss.openL3 = false;
+    statuss.openL2 =false;
+    statuss.openL1 = true;
+    statuss.openL3 = false;
+    statuss.L1Clear = false;
+    statuss.L2Clear = false;
+    // l1.style.display = 'block';
+    // l1.style.display = 'none';
    console.log(stats.openL2);
    console.log(stats.openL1);
    var statsString = JSON.stringify(statuss);
