@@ -77,7 +77,7 @@ console.log(statsString);
 function main(ctime) {
     window.requestAnimationFrame(main);
 
-    if ((ctime - lastTime) / 1000 < 1 / 2) {
+    if ((ctime - lastTime) / 1000 < 1 / 6) {
         return;
     }
     console.log(ctime);
@@ -170,7 +170,7 @@ async function check() {
         gameEngine();
     }
     
-    if (((apperentCx >= bigBlockLeft - 4 && apperentCx <= bigBlockLeft + 17) && cy <= 29 )|| ((apperentCx >= bigBlock2Left - 5 && apperentCx <= bigBlock2Left + 8) && cy <= 29)) {
+    if (((apperentCx >= bigBlockLeft - 6 && apperentCx <= bigBlockLeft + 17) && cy <= 29 )|| ((apperentCx >= bigBlock2Left - 4 && apperentCx <= bigBlock2Left + 16) && cy <= 29)) {
         console.log("thouched the big block");
         pass = false;
     }
@@ -260,7 +260,7 @@ async function check() {
         gameEnd = true;
     }
 
-    if (apperentCx >= bigBlockLeft && apperentCx <= bigBlockLeft + 16 && cy >= 34) {
+    if (apperentCx >= bigBlockLeft-5 && apperentCx <= bigBlockLeft + 16 && cy >= 28) {
         if(cyInitial != 30){
         cy = 30;
         cyInitial = 30;
@@ -277,7 +277,7 @@ async function check() {
     }
 
     // if ( ( apperentCx >= bigBlock2Left-2 ) && ( apperentCx <= bigBlock2Left + 16 ) && ( cy >= 25 ) ) {
-    if (distance >= 64 && distance <= 74) {
+    if (distance >= 60 && distance <= 74) {
         if(cyInitial != 30)
         {
         cy = 30;
@@ -443,11 +443,11 @@ async function jump () {
     // console.log("jumpppppppppppppppppp");
     gameBall.style.position = 'relative';
     while (cy <= 15 + cyInitial ) {
-        cy = cy + 3;
+        cy = cy + 1;
        
         gameBall.style.marginBottom = cy + '%';
         // console.log("cy  = "+cy);
-        await sleep(300);
+        await sleep(40);
     }
     // console.log("outt");
     fall();
@@ -459,11 +459,11 @@ async function fall() {
 
     while (cy - cyInitial > 0) {
 
-        cy = cy - 3 ;
+        cy = cy - 1 ;
         gameBall.style.marginBottom = cy + '%';
 
         // console.log(cy);
-        await sleep(300);
+        await sleep(40);
     }
     cy = cyInitial;
     gameBall.style.marginBottom = cy + '%';
