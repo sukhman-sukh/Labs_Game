@@ -89,14 +89,6 @@ function main(ctime) {
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
-(async () => {
-  console.log('1');
-  await sleep(500);
-  console.log('2');
-  await sleep(1500);
-  console.log('3');
-})();
-
 function gameEngine() {
     if (gameEnd == true) {
         window.location.href = "../../index.html";
@@ -211,6 +203,23 @@ async function check() {
         gameBall.style.marginBottom = cy + '%';
 }
     }
+
+if (apperentCx <= lowBlockLeft ) {
+    if(cyInitial != 0){
+    cy = 0;
+    cyInitial = 0;
+    gameBall.style.position = 'relative';
+    gameBall.style.marginBottom = cy + '%';
+    }}
+    
+if ((apperentCx >= lowBlockLeft+10  && apperentCx <=bigBlockLeft ) && cy<=18) {
+    if(cyInitial != 0){
+    cy = 0;
+    cyInitial = 0;
+    gameBall.style.position = 'relative';
+    gameBall.style.marginBottom = cy + '%';
+    }}
+
     if ((apperentCx <= platformleft + 13 && apperentCx >= platformleft - 3) && cy >= 28) {
         if(cyInitial<=30){
         cy = 30;

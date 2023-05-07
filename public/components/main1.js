@@ -96,12 +96,12 @@ document.querySelector('#l1').addEventListener('click', f1);
 
 function f1(){
     if(statuss.openL1 == true){
-    window.location.href = 'public/Screens/index2.html';
+    window.location.href = 'public/screens/index2.html';
 }}
 
 document.querySelector('#l2').addEventListener('click', f2);
 
 function f2(){
     if(statuss.openL2 == true){
-    window.location.href = 'public/Screens/index3.html';
+    window.location.href = 'public/screens/index3.html';
 }}
