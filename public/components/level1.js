@@ -1,7 +1,3 @@
-// GAME VARIABLES
-// import http from 'http';
-// import { status } from './module1.js';
-
 const canvas = document.getElementById("canvas1");
 const scorediv = document.getElementById("score");
 const thorn = document.getElementById("thorns");
@@ -22,7 +18,7 @@ const win_screen = document.getElementById('win_screen');
 const gameBall = document.getElementById('gameBall');
 
 let score = 0;
-let count=0;
+let count = 0;
 let keyPressed = true;
 //              [L,U,D,R]
 let keyStatus = [0, 0, 0, 0];
@@ -34,11 +30,6 @@ let canvasWidth = 600;
 let platformleft = 115;
 let oLeft = 100;
 let oRight = 120;
-
-// let platformleft = 50;
-// let oLeft = 45;
-// let oRight = 55;
-
 
 let thorn1Pass = false;
 let thorn2Pass = false;
@@ -54,13 +45,11 @@ let highBlockLeft = 100;
 let bigBlockLeft = 100;
 let daggerLeft = 200;
 let bigBlock2Left = 130;
-// let thornRight=thornLeft+thorn.clientWidth;
 let thornWidht = 10;
 let cx = 0;
 let apperentCx = 50;
 let cy = 0;
 let velocityY = 1;
-// let gravity = 1;
 var statsString;
 let cxLast = cx;
 let velocity = 2;
@@ -68,12 +57,13 @@ let isJumping = false;
 const acceleration = 0;
 const friction = 0;
 let cWidth = 10;
+
 // GAME FUNCTIONS
 var statuss;
 statuss = JSON.parse(localStorage.getItem("statusSukh"));
-    statsString = JSON.stringify(statuss);
+statsString = JSON.stringify(statuss);
 
-console.log(statsString);    
+console.log(statsString);
 function main(ctime) {
     window.requestAnimationFrame(main);
 
@@ -98,39 +88,26 @@ function gameEngine() {
     updateScreen();
     statuss = JSON.parse(localStorage.getItem("statusSukh"));
     statsString = JSON.stringify(statuss);
-    
+
 
 }
 
 async function check() {
-    
+
     let cRight = cx + cWidth;
     let thornRight = thornLeft + thornWidht;
     let lowBlockRight = lowBlockLeft + 10;
     let highBlockRight = highBlockLeft + 10;
     apperentCx = 50 + cx / 2;
 
-    // console.log(localStorage.getItem("statusSukh"));
-    console.log('pass = '+pass);
+    console.log('pass = ' + pass);
     console.log("cxLeft = " + apperentCx);
-    console.log("thornLeft = "+thornLeft);
-    // // // console.log("thornRight = "+thornRight);
-    // // // console.log("lowBlockLeft = " + lowBlockLeft);
-    // // // console.log("lowBlockRight = " + lowBlockRight);
-
-    // // // console.log("highBlockLeft = " + highBlockLeft);
-    // // // console.log("highBlockRight = " + highBlockRight);
-    // console.log("bigBlock = "+bigBlockLeft);
-    console.log("big Block 2 "+bigBlock2Left);
-    // console.log('plateformLeft '+platformleft);
+    console.log("thornLeft = " + thornLeft);
+    console.log("big Block 2 " + bigBlock2Left);
     console.log("cy = " + cy);
-    // console.log("cxLeft = "+cx);
-
 
     if (((apperentCx >= thornLeft && apperentCx <= thornRight && thorn1Pass == false)
-        // || (cRight >=thornLeft && cRight  <= thornRight )
     ) && cy == 0) {
-        // console.log("entered");
         thorn1Pass = true;
         statuss.L1Clear = false;
         gameEnd = true;
@@ -144,99 +121,75 @@ async function check() {
     }
 
     if (((apperentCx >= thorn2Left && apperentCx <= thorn2Left + thornWidht && thorn2Pass == false)
-        // || (cRight >=thornLeft && cRight  <= thornRight )
     ) && cy == 0) {
-        // console.log("entered");
         thorn2Pass = true;
         statuss.L1Clear = false;
         gameEnd = true;
         gameEngine();
     }
     if (((apperentCx >= thorn3Left && apperentCx <= thorn3Left + thornWidht && thorn3Pass == false)
-        // || (cRight >=thornLeft && cRight  <= thornRight )
     ) && cy == 0) {
-        // console.log("entered");
         thorn3Pass = true;
         statuss.L1Clear = false;
         gameEnd = true;
         gameEngine();
     }
-    
-    if (((apperentCx >= bigBlockLeft - 6 && apperentCx <= bigBlockLeft + 17) && cy <= 29 )|| ((apperentCx >= bigBlock2Left - 4 && apperentCx <= bigBlock2Left + 16) && cy <= 29)) {
+
+    if (((apperentCx >= bigBlockLeft - 6 && apperentCx <= bigBlockLeft + 17) && cy <= 29) || ((apperentCx >= bigBlock2Left - 4 && apperentCx <= bigBlock2Left + 14) && cy <= 29)) {
         console.log("thouched the big block");
         pass = false;
     }
     else {
         pass = true;
     }
-   
-    if (apperentCx >= highBlockLeft && apperentCx <= highBlockLeft + 10 && cy >= 23) {
-        if(cyInitial != 20)
-        {
 
-    //         statuss.L1Clear = true;
-    //         statsString = JSON.stringify(statuss);
-    //         localStorage.setItem("statusSukh", statsString);
-    //         console.log("stored");
-            
-    // console.log(localStorage.getItem("statusSukh"));
-    //         // await sleep(60000);
-          
-        
+    if (apperentCx >= highBlockLeft && apperentCx <= highBlockLeft + 10 && cy >= 23) {
+        if (cyInitial != 20) {
+
+
             cy = 20;
-        cyInitial = 20;
-        gameBall.style.position = 'relative';
-        gameBall.style.marginBottom = cy + '%';
-        // sky.style.backgroundImage = 'url("win_back.jpg")';
-        
-        // await sleep(5000);
-        // gameEnd = true;
-}
+            cyInitial = 20;
+            gameBall.style.position = 'relative';
+            gameBall.style.marginBottom = cy + '%';
+        }
     }
 
     if (apperentCx >= lowBlockLeft && apperentCx <= lowBlockLeft + 10 && cy >= 15) {
-        if(cyInitial!=11)
-        {
-        cy = 11;
-        cyInitial = 11;
-        gameBall.style.position = 'relative';
-        gameBall.style.marginBottom = cy + '%';
-}
+        if (cyInitial != 11) {
+            cy = 11;
+            cyInitial = 11;
+            gameBall.style.position = 'relative';
+            gameBall.style.marginBottom = cy + '%';
+        }
     }
 
-if (apperentCx <= lowBlockLeft ) {
-    if(cyInitial != 0){
-    cy = 0;
-    cyInitial = 0;
-    gameBall.style.position = 'relative';
-    gameBall.style.marginBottom = cy + '%';
-    }}
-    
-if ((apperentCx >= lowBlockLeft+10  && apperentCx <=bigBlockLeft ) && cy<=18) {
-    if(cyInitial != 0){
-    cy = 0;
-    cyInitial = 0;
-    gameBall.style.position = 'relative';
-    gameBall.style.marginBottom = cy + '%';
-    }}
+    if (apperentCx <= lowBlockLeft) {
+        if (cyInitial != 0) {
+            cy = 0;
+            cyInitial = 0;
+            gameBall.style.position = 'relative';
+            gameBall.style.marginBottom = cy + '%';
+        }
+    }
+
+    if ((apperentCx >= lowBlockLeft + 10 && apperentCx <= bigBlockLeft) && cy <= 18) {
+        if (cyInitial != 0) {
+            cy = 0;
+            cyInitial = 0;
+            gameBall.style.position = 'relative';
+            gameBall.style.marginBottom = cy + '%';
+        }
+    }
 
     if ((apperentCx <= platformleft + 13 && apperentCx >= platformleft - 3) && cy >= 28) {
-        if(cyInitial<=30){
-        cy = 30;
-        // console.log("on plateform");
-        cyInitial = 30;
-        gameBall.style.position = 'absolute';
-        // let xcord = (platformleft-50)/2;
-        gameBall.style.marginBottom = cy + "%";
-        gameBall.style.marginLeft = platformleft + '%';
-    }}
-    // else if(apperentCx > bigBlockLeft + 16  && keyPressed == false)
-    // {
-    //     cyInitial = 0;
-    //     cy =0;
-    //     gameBall.style.position = 'relative';
-    //     gameBall.style.marginBottom = cy + '%';
-    // }
+        if (cyInitial <= 30) {
+            cy = 30;
+            cyInitial = 30;
+            gameBall.style.position = 'absolute';
+            gameBall.style.marginBottom = cy + "%";
+            gameBall.style.marginLeft = platformleft + '%';
+        }
+    }
     else if (apperentCx > bigBlock2Left + 10 && keyPressed == false) {
         cyInitial = 0;
         cy = 0;
@@ -245,7 +198,6 @@ if ((apperentCx >= lowBlockLeft+10  && apperentCx <=bigBlockLeft ) && cy<=18) {
     }
 
     else if (apperentCx < lowBlockLeft || (apperentCx > lowBlockLeft + 10 && apperentCx < highBlockLeft) || (apperentCx > highBlockLeft + 10 && apperentCx < bigBlockLeft) || apperentCx > bigBlockLeft + 16) {
-        // console.log("should fall now");
         cyInitial = 0;
 
     }
@@ -255,11 +207,6 @@ if ((apperentCx >= lowBlockLeft+10  && apperentCx <=bigBlockLeft ) && cy<=18) {
 
         statuss.openL2 = true;
         statuss.openL1 = false;
-        // l1.style.color = 'black';
-        // l1.style.backgroundColor = "yellow";
-      
-        // l2.style.display = 'block';
-
         statsString = JSON.stringify(statuss);
         localStorage.setItem("statusSukh", statsString);
         canvas.style.visibility = 'hidden';
@@ -269,12 +216,12 @@ if ((apperentCx >= lowBlockLeft+10  && apperentCx <=bigBlockLeft ) && cy<=18) {
         gameEnd = true;
     }
 
-    if (apperentCx >= bigBlockLeft-5 && apperentCx <= bigBlockLeft + 16 && cy >= 28) {
-        if(cyInitial != 30){
-        cy = 30;
-        cyInitial = 30;
-        gameBall.style.position = 'relative';
-        gameBall.style.marginBottom = cy + '%';
+    if (apperentCx >= bigBlockLeft - 5 && apperentCx <= bigBlockLeft + 16 && cy >= 28) {
+        if (cyInitial != 30) {
+            cy = 30;
+            cyInitial = 30;
+            gameBall.style.position = 'relative';
+            gameBall.style.marginBottom = cy + '%';
         }
         if (score < 20) {
 
@@ -285,15 +232,12 @@ if ((apperentCx >= lowBlockLeft+10  && apperentCx <=bigBlockLeft ) && cy<=18) {
 
     }
 
-    // if ( ( apperentCx >= bigBlock2Left-2 ) && ( apperentCx <= bigBlock2Left + 16 ) && ( cy >= 25 ) ) {
     if (distance >= 60 && distance <= 74) {
-        if(cyInitial != 30)
-        {
-        cy = 30;
-        cyInitial = 30;
-        // console.log("at big blovk 2", cy, cyInitial);
-        gameBall.style.position = 'relative';
-        gameBall.style.marginBottom = cy + '%';
+        if (cyInitial != 30) {
+            cy = 30;
+            cyInitial = 30;
+            gameBall.style.position = 'relative';
+            gameBall.style.marginBottom = cy + '%';
         }
         if (score < 30) {
 
@@ -328,26 +272,21 @@ function move() {
 
             keyPressed = true;
             moveForward();
-            if(count ==0){
-                velocity =3;
-            jump();
-            count =1;
-        }
-            //    gameBall.classList.add('jumpanimation');
-            //    console.log("right and up");
-
+            if (count == 0) {
+                velocity = 3;
+                jump();
+                count = 1;
+            }
         }
         if (keyStatus[0] == 1 && keyStatus[1] == 1) {
             velocity = 2;
             keyPressed = true;
             moveBackward();
-            if(count ==0){
-                velocity =3;
-            jump();
-            count =1;
-        }
-            //    gameBall.classList.add('jumpanimation');
-            //    console.log("left and up");
+            if (count == 0) {
+                velocity = 3;
+                jump();
+                count = 1;
+            }
 
         }
         else if (keyStatus[3] == 1) {
@@ -365,13 +304,12 @@ function move() {
         }
         else if (keyStatus[1] == 1) {
             keyPressed = true;
-            if(count ==0){
-                velocity =3;
-            jump();
-            count =1;
-        }
-            //    gameBall.classList.add('jumpanimation');
-        }
+            if (count == 0) {
+                velocity = 3;
+                jump();
+                count = 1;
+            }
+          }
 
     }
     document.onkeyup = function (e) {
@@ -390,20 +328,10 @@ function move() {
         if (keyStatus[0] == 1 && keyStatus[1] == 1) {
 
             keyPressed = false;
-
-            // fall();
-            //    gameBall.classList.add('jumpanimation');
-            //    console.log("left and up");
-
         }
         if (keyStatus[0] == 1 && keyStatus[1] == 1) {
 
             keyPressed = false;
-
-            // fall();
-            //    gameBall.classList.add('jumpanimation');
-            //    console.log("left and up");
-
         }
         if (e.key == 'ArrowRight') {
             keyPressed = false;
@@ -415,9 +343,7 @@ function move() {
         }
         else if (e.key == 'ArrowUp') {
             keyPressed = false;
-            // fall();
-            //    gameBall.classList.remove('jumpanimation');
-        }
+          }
     }
 }
 
@@ -436,8 +362,7 @@ function moveForward() {
 }
 
 function moveBackward() {
-    // if(cx> -90)
-    {
+     {
         cx = cx - velocity;
         gameBall.style.position = 'relative';
         gameBall.style.marginLeft = cx + '%';
@@ -447,19 +372,16 @@ function moveBackward() {
     }
 }
 
-async function jump () {
+async function jump() {
 
-    // console.log("jumpppppppppppppppppp");
     gameBall.style.position = 'relative';
-    while (cy <= 15 + cyInitial ) {
+    while (cy <= 15 + cyInitial) {
         cy = cy + 1;
-       
+
         gameBall.style.marginBottom = cy + '%';
-        // console.log("cy  = "+cy);
-        await sleep(40);
+         await sleep(40);
     }
-    // console.log("outt");
-    fall();
+     fall();
 
 }
 
@@ -468,15 +390,14 @@ async function fall() {
 
     while (cy - cyInitial > 0) {
 
-        cy = cy - 1 ;
+        cy = cy - 1;
         gameBall.style.marginBottom = cy + '%';
 
-        // console.log(cy);
-        await sleep(40);
+         await sleep(40);
     }
     cy = cyInitial;
     gameBall.style.marginBottom = cy + '%';
-    count =0;
+    count = 0;
     velocity = 2;
 }
 
@@ -484,7 +405,7 @@ async function fall() {
 function updateScreen() {
     scorediv.innerHTML = 'Score :- ' + score;
     oscillate();
-    if (cx >= 30 && keyPressed == true && pass == true && keyStatus[3] == 1 && pass ==true) {
+    if (cx >= 30 && keyPressed == true && pass == true && keyStatus[3] == 1 && pass == true) {
         distance = distance + 1;
     }
 
@@ -507,12 +428,6 @@ function updateScreen() {
 let p = 0;
 function oscillate() {
 
-    // console.log(" platform left  " + platformleft);
-    // console.log(" oLeft  " + oLeft);
-    // console.log(" Oright  " + oRight);
-
-
-
     if (platformleft <= oLeft) { p = 1; }
     if (platformleft >= oRight) { p = 0; }
 
@@ -526,8 +441,6 @@ function oscillate() {
 }
 function thornLand() {
     thornLeft = thornLeft - 2;
-    // console.log("print thorn left  "+thornLeft);
-    // thorn.style.position = 'absolute';
     thorn.style.display = 'block';
     thorn.style.marginLeft = thornLeft + '%';
 }
@@ -536,7 +449,6 @@ function thorn2Land() {
     thorn2Left = thorn2Left - 2;
     bigBlock2Left = bigBlock2Left - 2;
     bigBlock2.style.marginLeft = bigBlock2Left + '%';
-    // console.log("print thorn left  "+thornLeft);
     thorn2.style.position = 'absolute';
 
     thorn2.style.display = 'block';
@@ -557,7 +469,7 @@ function thorn2Land() {
     dagger.style.display = 'block';
     dagger.style.marginLeft = daggerLeft + '%';
 
-    // 
+    
 }
 
 function blocks() {
